@@ -45,7 +45,7 @@ async def search(request):
             }
         }
     }
-    es = AsyncElasticsearch("http://localhost:9200", http_auth=('admin', 'sekisakiwewe'))
+    es = AsyncElasticsearch("http://localhost:9200", http_auth=('', ''))
     ret = await asyncio.create_task(async_search(es, index, search_object))
     return ret
 
@@ -53,7 +53,7 @@ async def search(request):
 async def create(request):
     value = request
     index = "tweets"
-    es = AsyncElasticsearch("http://localhost:9200", http_auth=('admin', 'sekisakiwewe'))
+    es = AsyncElasticsearch("http://localhost:9200", http_auth=('', ''))
     ret = await asyncio.create_task(async_create(es, index, request))
     return ret
 
@@ -61,7 +61,7 @@ async def create(request):
 async def delete(request):
     id = request
     index = "tweets"
-    es = AsyncElasticsearch("http://localhost:9200", http_auth=('admin', 'sekisakiwewe'))
+    es = AsyncElasticsearch("http://localhost:9200", http_auth=('', ''))
     ret = await asyncio.create_task(async_delete(es, index, id))
     return ret
 
@@ -70,6 +70,6 @@ async def update(request):
     body = request['id']
     id = request['val']
     index = "tweets"
-    es = AsyncElasticsearch("http://localhost:9200", http_auth=('admin', 'sekisakiwewe'))
+    es = AsyncElasticsearch("http://localhost:9200", http_auth=('', ''))
     ret = await asyncio.create_task(async_update(es, index, id, body))
     return ret
