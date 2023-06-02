@@ -45,6 +45,7 @@ async def search(request):
             }
         }
     }
+    # Add your parameters of login and password to http_auth
     es = AsyncElasticsearch("http://localhost:9200", http_auth=('', ''))
     ret = await asyncio.create_task(async_search(es, index, search_object))
     return ret
